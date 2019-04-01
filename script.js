@@ -1,5 +1,11 @@
 'use strict'
 
+/* 
+1 ROCK
+2 PAPER
+3 SCISSORS
+*/
+
 let resultDiv = document.getElementById('result');
 
 let btnRock = document.getElementById('button-rock');
@@ -22,12 +28,6 @@ function computerMove() {
     let computerChoice = randomNumber(3);
     return computerChoice;
 }
-
-/*
-1 ROCK
-2 PAPER
-3 SCISSORS
-*/
 
 function checkWinner(playerChoice,computerChoice) {
     if (playerChoice === 1 && computerChoice === 2) {
