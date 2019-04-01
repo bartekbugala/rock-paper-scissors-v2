@@ -85,8 +85,23 @@ section {
     section div #button-scissors:hover, section div #button-scissors:active {
       color: #5b62a5;
       background-color: #fff; }
+  section div #button-start {
+    text-align: center;
+    background-color: #000;
+    border: 2px solid #fff; }
+    section div #button-start:hover, section div #button-start:active {
+      color: #000;
+      background-color: #fff; }
   section #output {
     color: #fff;
     background-color: #000; }
+  section #result {
+    font-size: 2em;
+    color: #fff;
+    background-color: #000; }
+    section #result span:first-child {
+      color: #02ac46; }
+    section #result span:last-child {
+      color: #a7202c; }
 
 /*# sourceMappingURL=style.css.map */

@@ -147,9 +147,32 @@ section {
                 background-color: $color6;
             }
         }
+        #button-start {
+            text-align: center;
+            background-color: $color0;
+            border: 2px solid $color6;
+
+            &:hover,
+            &:active {
+                color: $color0;
+                background-color: $color6;
+            }
+        }
     }
     #output {
         color: $color6;
         background-color: $color0;
+    }
+    #result {
+        font-size: 2em;
+        color: $color6;
+        background-color: $color0;
+        span:first-child {
+            color: $color2;
+        }
+        span:last-child {
+            color: $color1;
+
+        }
     }
 }
