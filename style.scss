@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Color Variables
+$color0: #000;
+$color1: #a7202c;
+$color2: #02ac46;
+$color3: #5b62a5;
+$color4: #8c00ff;
+$color5: #ccc;
+$color6: #fff;
+
+
+// Simple Grid
+.row {
+
+    &::before,
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    [class*="col-"] {
+        float: left;
+    }
+
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
+
+body {
+    text-align: center;
+    background-color: $color0;
+    color: $color3;
+}
+
+.container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section {
+    margin-top: 20px;
+    border: 6px solid $color4;
+    border-radius: 20px;
+    padding: 10px 10px 30px 10px;
+    div {
+        button {
+            display: inline-block;
+            color: $color6;
+            padding: 11px 50px;
+            max-width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            border-radius: 4px;
+            transition: color .3s, background-color .3s;
+            cursor: pointer;
+            outline: 0 !important;
+            text-decoration: none;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        #button-rock {
+            background-color: $color1;
+            border: 2px solid $color1;
+
+            &:hover,
+            &:active {
+                color: $color1;
+                background-color: $color6;
+            }
+        }
+
+        #button-paper {
+            background-color: $color2;
+            border: 2px solid $color2;
+
+            &:hover,
+            &:active {
+                color: $color2;
+                background-color: $color6;
+            }
+        }
+
+        #button-scissors {
+            text-align: center;
+            background-color: $color3;
+            border: 2px solid $color3;
+
+            &:hover,
+            &:active {
+                color: $color3;
+                background-color: $color6;
+            }
+        }
+    }
+    #output {
+        color: $color6;
+        background-color: $color0;
+    }
+}
