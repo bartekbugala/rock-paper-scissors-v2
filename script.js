@@ -54,32 +54,33 @@ function singleWinMsg(playerChoice,computerChoice,wonLost) {
 function checkWinner(playerChoice) {
     let computerChoice = randomOf3();
 
-    let winMsg = '<span id="player">YOU WON!</span> ';
-    let looseMsg = '<span id="computer">YOU LOST!</span> ';
-    let tieMsg = '<span>TIE!</span> '
-
-
+    let resultMsg = {
+        0: '<span>TIE!</span> ',
+        1: '<span id="computer">YOU LOST!</span> ',
+        2: '<span id="player">YOU WON!</span> ',
+    }
     let fightChart = {
         '11': 0,
         '22': 0,
         '33': 0,
-        '12': -1,
-        '23': -1,
-        '31': -1,
-        '13': 1,
-        '21': 1,
-        '32': 1,
+        '12': 1,
+        '23': 1,
+        '31': 1,
+        '13': 2,
+        '21': 2,
+        '32': 2,
     }
-
-
-        resultComputer++;
-        return singleWinMsg(playerChoice,computerChoice,looseMsg);
-    }    
-    if ((playerChoice === 2 && computerChoice === 1)||(playerChoice === 1 && computerChoice === 3)||(playerChoice === 3 && computerChoice === 2)) {
-        resultPlayer++;
-        return singleWinMsg(playerChoice,computerChoice,winMsg);
-    }    
-    return singleWinMsg(playerChoice,computerChoice,tieMsg);
+    let joinedPlayerComputer = playerChoice.toString() + computerChoice.toString();
+    console.log(fightChart[joinedPlayerComputer]);
+    switch(fightChart[joinedPlayerComputer]) {
+    case 1:
+    resultComputer++;
+    break;
+    case 2:
+    resultPlayer++;
+    break;
+    }
+    return singleWinMsg(playerChoice,computerChoice,resultMsg[fightChart[joinedPlayerComputer]]);
 }
 
 function updateLineMsg(domElement, textToDisplay) {
