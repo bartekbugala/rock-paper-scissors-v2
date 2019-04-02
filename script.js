@@ -16,23 +16,27 @@ let resultComputer = 0;
 let roundsToWin = 0;
 let gameOver = true;
 
+let currentWinMsg = '';
+let gameOverMsg = '';
+
 function randomOf3() {
     return Math.floor((Math.random() * 3) + 1);
 }
 
 function playerMove(playerChoice) {
-    if (/*Math.max(resultPlayer, resultComputer) < roundsToWin*/!gameOver) {
+    if (!gameOver) {
         let resultMessage = checkWinner(playerChoice);
         updateLineMsg(outputDiv, resultMessage);
         updateResultMsg();
     }
     if (resultPlayer === roundsToWin) {
         gameOver = true;
-        updateLineMsg(btnStart,'Start');
-        return addLineMsg(outputDiv, 'YOU WON THE ENTIRE GAME');
+        gameOverMsg = 'YOU WON THE ENTIRE GAME - GAME OVER';
+        return addLineMsg(outputDiv, gameOverMsg);
     } if (resultComputer === roundsToWin) {
         gameOver = true;
-        return addLineMsg(outputDiv, 'COMPUTER WON THE ENTIRE GAME');
+        gameOverMsg = 'COMPUTER WON THE ENTIRE GAME - GAME OVER';
+        return addLineMsg(outputDiv, gameOverMsg);
     }
     return;
 }
@@ -72,6 +76,11 @@ function updateResultMsg() {
     resultDiv.innerHTML = '<span>' + resultPlayer + '</span>' + ' - ' + '<span>' + resultComputer + '</span>';
 }
 
+function gameOverMessageOnButton() {
+    let msg = "Game over, please press the new game button!";
+    updateLineMsg(outputDiv, gameOverMsg +'<br><br>'+ msg );
+}
+
 btnStart.addEventListener('click', function () {
     // Prompt with validation
     roundsToWin = prompt('How many rounds to win?');
@@ -80,39 +89,38 @@ btnStart.addEventListener('click', function () {
     }
     roundsToWin = parseInt(roundsToWin);
     if (isNaN(roundsToWin) || roundsToWin <= 0) {
-        alert('Please, enter positive integer.');
+        updateLineMsg(outputDiv, 'Wrong input, please enter a positive number.');
         return;
     }
     // Reset variables - Start game
-    updateLineMsg(outputDiv, 'NEW GAME STARTED - CHOOSE FIGURE');
+    updateLineMsg(outputDiv, 'New game started');
     resultPlayer = 0;
     resultComputer = 0;
     gameOver = false;
     updateResultMsg();
     updateLineMsg(roundsNumber, roundsToWin);
-    updateLineMsg(btnStart,'Restart Game');
 });
 
 // Figure Buttons
 btnRock.addEventListener('click', function () {
-    if(gameOver){
-        updateLineMsg(outputDiv,'Press Start');
+    if (gameOver) {
+        gameOverMessageOnButton()
         return;
     }
     playerMove(1);
 });
 
 btnPaper.addEventListener('click', function () {
-    if(gameOver){
-        updateLineMsg(outputDiv,'Press Start');
+    if (gameOver) {
+        gameOverMessageOnButton()
         return;
     }
     playerMove(2);
 });
 
 btnScissors.addEventListener('click', function () {
-    if(gameOver){
-        updateLineMsg(outputDiv,'Press Start');
+    if (gameOver) {
+        gameOverMessageOnButton()
         return;
     }
     playerMove(3);

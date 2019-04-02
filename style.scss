@@ -119,6 +119,7 @@ section {
             text-decoration: none;
             touch-action: manipulation;
             user-select: none;
+            text-transform: capitalize;
         }
 
         #button-rock {
@@ -182,4 +183,7 @@ section {
             color: $color1;
         }
     }
+}
+.output {
+    min-height: 120px;
 }

@@ -70,7 +70,8 @@ section {
     outline: 0 !important;
     text-decoration: none;
     touch-action: manipulation;
-    user-select: none; }
+    user-select: none;
+    text-transform: capitalize; }
   section div #button-rock {
     background-color: #a7202c;
     border: 2px solid #a7202c; }
@@ -108,5 +109,8 @@ section {
       color: #02ac46; }
     section #result span:last-child {
       color: #a7202c; }
+
+.output {
+  min-height: 120px; }
 
 /*# sourceMappingURL=style.css.map */
