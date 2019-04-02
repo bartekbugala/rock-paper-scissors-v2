@@ -31,37 +31,48 @@ function playerMove(playerChoice) {
     }
     if (resultPlayer === roundsToWin) {
         gameOver = true;
-        gameOverMsg = 'YOU WON THE ENTIRE GAME - GAME OVER';
+        gameOverMsg = 'YOU WON THE ENTIRE GAME';
         return addLineMsg(outputDiv, gameOverMsg);
     } if (resultComputer === roundsToWin) {
         gameOver = true;
-        gameOverMsg = 'COMPUTER WON THE ENTIRE GAME - GAME OVER';
+        gameOverMsg = 'COMPUTER WON THE ENTIRE GAME';
         return addLineMsg(outputDiv, gameOverMsg);
     }
     return;
 }
 
+function singleWinMsg(playerChoice,computerChoice,wonLost) {
+    let keyFigures = {
+        1: '<span id="rock">ROCK</span>',
+        2: '<span id="paper">PAPER</span>',
+        3: '<span id="scissors">SCISSORS</span>'
+    }
+    return wonLost +'You played: '+keyFigures[playerChoice]+', Computer played: '+keyFigures[computerChoice];
+}
+
 function checkWinner(playerChoice) {
     let computerChoice = randomOf3();
+    let winMsg = 'YOU WON! ';
+    let looseMsg = 'YOU LOST! ';    
     if (playerChoice === 1 && computerChoice === 2) {
         resultComputer++;
-        return 'YOU LOST! you played ROCK, computer played PAPER';
+        return singleWinMsg(playerChoice,computerChoice,looseMsg);
     } else if (playerChoice === 2 && computerChoice === 1) {
         resultPlayer++;
-        return 'YOU WON! you played PAPER, computer played ROCK';
+        return singleWinMsg(playerChoice,computerChoice,winMsg);
     } else if (playerChoice === 3 && computerChoice === 1) {
         resultComputer++;
-        return 'YOU LOST! you played SCISSORS, computer played ROCK';
+        return singleWinMsg(playerChoice,computerChoice,looseMsg);
     } else if (playerChoice === 1 && computerChoice === 3) {
         resultPlayer++;
-        return 'YOU WON! You played ROCK, computer played SCISSORS';
+        return singleWinMsg(playerChoice,computerChoice,winMsg);
     } else if (playerChoice === 3 && computerChoice === 2) {
         resultPlayer++;
-        return 'YOU WON! You played SCISSORS, Computer played PAPER';
+        return singleWinMsg(playerChoice,computerChoice,winMsg);
     } else if (playerChoice === 2 && computerChoice === 3) {
         resultComputer++;
-        return 'YOU LOST! you played PAPER, computer played SCISSORS';
-    } return 'DRAW';
+        return singleWinMsg(playerChoice,computerChoice,looseMsg);
+    } return singleWinMsg(playerChoice,computerChoice,'TIE! ');
 }
 
 function updateLineMsg(domElement, textToDisplay) {
@@ -77,8 +88,8 @@ function updateResultMsg() {
 }
 
 function gameOverMessageOnButton() {
-    let msg = "Game over, please press the new game button!";
-    updateLineMsg(outputDiv, gameOverMsg +'<br><br>'+ msg );
+    let msg = "Game over, please press the New Game button!";
+    addLineMsg(outputDiv, msg );
 }
 
 btnStart.addEventListener('click', function () {
