@@ -53,12 +53,25 @@ function singleWinMsg(playerChoice,computerChoice,wonLost) {
 
 function checkWinner(playerChoice) {
     let computerChoice = randomOf3();
-    
+
     let winMsg = '<span id="player">YOU WON!</span> ';
     let looseMsg = '<span id="computer">YOU LOST!</span> ';
     let tieMsg = '<span>TIE!</span> '
 
-    if ((playerChoice === 1 && computerChoice === 2)||(playerChoice === 3 && computerChoice === 1)||(playerChoice === 2 && computerChoice === 3)) {
+
+    let fightChart = {
+        '11': 0,
+        '22': 0,
+        '33': 0,
+        '12': -1,
+        '23': -1,
+        '31': -1,
+        '13': 1,
+        '21': 1,
+        '32': 1,
+    }
+
+
         resultComputer++;
         return singleWinMsg(playerChoice,computerChoice,looseMsg);
     }    
