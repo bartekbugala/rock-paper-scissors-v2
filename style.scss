@@ -187,14 +187,13 @@ section {
 .output {
     min-height: 120px;
     span {
-        padding: 2px;
+        color: $color0;
+        padding: 4px;
         border-radius: 5px;
-        
         background-color: $color5;
     }
     #rock {
-        color: $color1;
-        
+        color: $color1;        
     }
     #paper {
         color: $color2;
@@ -202,7 +201,13 @@ section {
     }
     #scissors {
         color: $color3;
- 
     }
-    #player
+    #player {
+        color: $color6;
+        background-color: $color2;
+    }
+    #computer {
+        color: $color6;
+        background-color: $color1;
+    }
 }

@@ -15,6 +15,7 @@ let resultPlayer = 0;
 let resultComputer = 0;
 let roundsToWin = 0;
 let gameOver = true;
+let gameOverInfo = false;
 
 let currentWinMsg = '';
 let gameOverMsg = '';
@@ -31,11 +32,11 @@ function playerMove(playerChoice) {
     }
     if (resultPlayer === roundsToWin) {
         gameOver = true;
-        gameOverMsg = 'YOU WON THE ENTIRE GAME';
+        gameOverMsg = '<span id="player">YOU WON THE ENTIRE GAME</span>';
         return addLineMsg(outputDiv, gameOverMsg);
     } if (resultComputer === roundsToWin) {
         gameOver = true;
-        gameOverMsg = 'COMPUTER WON THE ENTIRE GAME';
+        gameOverMsg = '<span id="computer">COMPUTER WON THE ENTIRE GAME</span>';
         return addLineMsg(outputDiv, gameOverMsg);
     }
     return;
@@ -52,8 +53,9 @@ function singleWinMsg(playerChoice,computerChoice,wonLost) {
 
 function checkWinner(playerChoice) {
     let computerChoice = randomOf3();
-    let winMsg = 'YOU WON! ';
-    let looseMsg = 'YOU LOST! ';    
+    let winMsg = '<span id="player">YOU WON!</span> ';
+    let looseMsg = '<span id="computer">YOU LOST!</span> ';
+    let tieMsg = '<span>TIE!</span> '    
     if (playerChoice === 1 && computerChoice === 2) {
         resultComputer++;
         return singleWinMsg(playerChoice,computerChoice,looseMsg);
@@ -72,7 +74,7 @@ function checkWinner(playerChoice) {
     } else if (playerChoice === 2 && computerChoice === 3) {
         resultComputer++;
         return singleWinMsg(playerChoice,computerChoice,looseMsg);
-    } return singleWinMsg(playerChoice,computerChoice,'TIE! ');
+    } return singleWinMsg(playerChoice,computerChoice,tieMsg);
 }
 
 function updateLineMsg(domElement, textToDisplay) {
@@ -88,8 +90,12 @@ function updateResultMsg() {
 }
 
 function gameOverMessageOnButton() {
+    if (gameOverInfo===true){
+        return
+    }
+    gameOverInfo = true;
     let msg = "Game over, please press the New Game button!";
-    addLineMsg(outputDiv, msg );
+    addLineMsg(outputDiv, msg);
 }
 
 btnStart.addEventListener('click', function () {
@@ -108,6 +114,7 @@ btnStart.addEventListener('click', function () {
     resultPlayer = 0;
     resultComputer = 0;
     gameOver = false;
+    gameOverInfo = false;
     updateResultMsg();
     updateLineMsg(roundsNumber, roundsToWin);
 });

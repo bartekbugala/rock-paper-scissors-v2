@@ -1,48 +1,134 @@
-/*
-Error: Invalid CSS after "    #player": expected "{", was "}"
-        on line 208 of style.scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
 
-203:     #scissors {
-204:         color: $color3;
-205:  
-206:     }
-207:     #player
-208: }
+.row::before, .row::after {
+  content: "";
+  display: table;
+  clear: both; }
+.row [class*="col-"] {
+  float: left; }
+.row .col-1 {
+  width: 8.33%; }
+.row .col-2 {
+  width: 16.66%; }
+.row .col-3 {
+  width: 25%; }
+.row .col-4 {
+  width: 33.33%; }
+.row .col-5 {
+  width: 41.66%; }
+.row .col-6 {
+  width: 50%; }
+.row .col-7 {
+  width: 58.33%; }
+.row .col-8 {
+  width: 66.66%; }
+.row .col-9 {
+  width: 75%; }
+.row .col-10 {
+  width: 83.33%; }
+.row .col-11 {
+  width: 91.66%; }
+.row .col-12 {
+  width: 100%; }
 
-Backtrace:
-style.scss:208
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:1308:in `expected'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:1238:in `expected'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:1233:in `tok!'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:688:in `block'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:758:in `declaration_or_ruleset'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:708:in `block_child'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:700:in `block_contents'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:689:in `block'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:681:in `ruleset'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:707:in `block_child'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:700:in `block_contents'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:137:in `stylesheet'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/scss/parser.rb:41:in `parse'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/engine.rb:414:in `_to_tree'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/engine.rb:307:in `render_with_sourcemap'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:209:in `each'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:320:in `block in watch'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
-C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"    #player\": expected \"{\", was \"}\"\A         on line 208 of style.scss\A \A 203:     #scissors {\A 204:         color: $color3;\A 205:  \A 206:     }\A 207:     #player\A 208: }"; }
+body {
+  text-align: center;
+  background-color: #000;
+  color: #5b62a5; }
+
+.container {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto; }
+
+section {
+  margin-top: 20px;
+  border: 6px solid #8c00ff;
+  border-radius: 20px;
+  padding: 20px; }
+  section div .score-index {
+    font-size: 2em;
+    color: #ccc; }
+    section div .score-index span {
+      color: #fff; }
+  section div button {
+    display: inline-block;
+    color: #fff;
+    padding: 11px 50px;
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 4px;
+    transition: color .3s, background-color .3s;
+    cursor: pointer;
+    outline: 0 !important;
+    text-decoration: none;
+    touch-action: manipulation;
+    user-select: none;
+    text-transform: capitalize; }
+  section div #button-rock {
+    background-color: #a7202c;
+    border: 2px solid #a7202c; }
+    section div #button-rock:hover, section div #button-rock:active {
+      color: #a7202c;
+      background-color: #fff; }
+  section div #button-paper {
+    background-color: #02ac46;
+    border: 2px solid #02ac46; }
+    section div #button-paper:hover, section div #button-paper:active {
+      color: #02ac46;
+      background-color: #fff; }
+  section div #button-scissors {
+    text-align: center;
+    background-color: #5b62a5;
+    border: 2px solid #5b62a5; }
+    section div #button-scissors:hover, section div #button-scissors:active {
+      color: #5b62a5;
+      background-color: #fff; }
+  section div #button-start {
+    text-align: center;
+    background-color: #000;
+    border: 2px solid #fff; }
+    section div #button-start:hover, section div #button-start:active {
+      color: #000;
+      background-color: #fff; }
+  section #output {
+    color: #fff;
+    background-color: #000; }
+  section #result {
+    font-size: 2em;
+    color: #fff;
+    text-align: left; }
+    section #result span:first-child {
+      color: #02ac46; }
+    section #result span:last-child {
+      color: #a7202c; }
+
+.output {
+  min-height: 120px; }
+  .output span {
+    color: #000;
+    padding: 4px;
+    border-radius: 5px;
+    background-color: #ccc; }
+  .output #rock {
+    color: #a7202c; }
+  .output #paper {
+    color: #02ac46;
+    background-color: #ccc; }
+  .output #scissors {
+    color: #5b62a5; }
+  .output #player {
+    color: #fff;
+    background-color: #02ac46; }
+  .output #computer {
+    color: #fff;
+    background-color: #a7202c; }
+
+/*# sourceMappingURL=style.css.map */
