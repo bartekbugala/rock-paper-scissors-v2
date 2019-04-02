@@ -95,6 +95,13 @@ section {
     border-radius: 20px;
     padding: 20px;
     div {
+        .score-index {
+        font-size: 2em;
+        color: $color5;
+        span {
+            color: $color6;
+        }
+    }
         button {
             display: inline-block;
             color: $color6;
@@ -166,13 +173,13 @@ section {
     #result {
         font-size: 2em;
         color: $color6;
-        background-color: $color0;
+        text-align: left;
+
         span:first-child {
             color: $color2;
         }
         span:last-child {
             color: $color1;
-
         }
     }
 }

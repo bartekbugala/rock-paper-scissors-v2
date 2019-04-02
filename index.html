@@ -9,7 +9,11 @@
 
 <body>
     <section class="container">
-        <div id="result"><span>0</span> - <span>0</span></div>
+        <div class="row">
+            <div class="col-2 score-index">Score:</div>
+            <div class="col-2" id="result"><span>0</span> - <span>0</span></div>
+            <div class="col-8 score-index">Rounds to win: <span id="rounds-number">0</span></div>
+        </div>
     </section>
     <section class="container">
         <div>
@@ -24,10 +28,10 @@
     </section>
 
     <section class="container">
-            <div>
-                <button id="button-start">START</button>
-            </div>
-        </section>
+        <div>
+            <button id="button-start">START</button>
+        </div>
+    </section>
     <script src="./script.js"></script>
 </body>
 
