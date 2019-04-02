@@ -17,11 +17,16 @@ let roundsToWin = 0;
 let gameOver = true;
 let gameOverInfo = false;
 
-let currentWinMsg = '';
 let gameOverMsg = '';
 
 function randomOf3() {
-    return Math.floor((Math.random() * 3) + 1);
+    let randomNumber = Math.floor((Math.random() * 3) + 1);
+    let computerMoves = {
+        1: 'ROCK',
+        2: 'PAPER',
+        3: 'SCISSORS'
+    }
+    return computerMoves[randomNumber];
 }
 
 function playerMove(playerChoice) {
@@ -42,13 +47,13 @@ function playerMove(playerChoice) {
     return;
 }
 
-function singleWinMsg(playerChoice,computerChoice,wonLost) {
+function singleWinMsg(playerChoice,computerChoice,wonLostMsg) {
     let keyFigures = {
-        1: '<span id="rock">ROCK</span>',
-        2: '<span id="paper">PAPER</span>',
-        3: '<span id="scissors">SCISSORS</span>'
+        'ROCK': '<span id="rock">ROCK</span>',
+        'PAPER': '<span id="paper">PAPER</span>',
+        'SCISSORS': '<span id="scissors">SCISSORS</span>'
     }
-    return wonLost +'You played: '+keyFigures[playerChoice]+', Computer played: '+keyFigures[computerChoice];
+    return wonLostMsg +'You played: '+keyFigures[playerChoice]+', Computer played: '+keyFigures[computerChoice];
 }
 
 function checkWinner(playerChoice) {
@@ -56,12 +61,15 @@ function checkWinner(playerChoice) {
     
     let winMsg = '<span id="player">YOU WON!</span> ';
     let looseMsg = '<span id="computer">YOU LOST!</span> ';
-    let tieMsg = '<span>TIE!</span> '
-
+    let tieMsg = '<span>TIE!</span> ';
+    
+    console.log(playerChoice+' '+computerChoice);
+    console.log(playerChoice === computerChoice);
+    
     if (playerChoice === computerChoice) {
-        singleWinMsg(playerChoice,computerChoice,tieMsg);
+        return singleWinMsg(playerChoice,computerChoice,tieMsg);
     }
-    else if ((playerChoice === 1 && computerChoice === 2)||(playerChoice === 3 && computerChoice === 1)||(playerChoice === 2 && computerChoice === 3)) {
+    else if ((playerChoice === 'ROCK' && computerChoice === 'PAPER')||(playerChoice === 'SCISSORS' && computerChoice === 'ROCK')||(playerChoice === 'PAPER' && computerChoice === 'SCISSORS')) {
         resultComputer++;
         return singleWinMsg(playerChoice,computerChoice,looseMsg);
     }    
@@ -84,10 +92,10 @@ function updateResultMsg() {
 
 function gameOverMessageOnButton() {
     if (gameOverInfo===true){
-        return
+        return;
     }
     gameOverInfo = true;
-    let msg = "Game over, please press the New Game button!";
+    let msg = 'Game over, please press the New Game button!';
     addLineMsg(outputDiv, msg);
 }
 
@@ -118,7 +126,7 @@ btnRock.addEventListener('click', function () {
         gameOverMessageOnButton()
         return;
     }
-    playerMove(1);
+    playerMove('ROCK');
 });
 
 btnPaper.addEventListener('click', function () {
@@ -126,13 +134,13 @@ btnPaper.addEventListener('click', function () {
         gameOverMessageOnButton()
         return;
     }
-    playerMove(2);
+    playerMove('PAPER');
 });
 
 btnScissors.addEventListener('click', function () {
     if (gameOver) {
-        gameOverMessageOnButton()
+        gameOverMessageOnButton();
         return;
     }
-    playerMove(3);
+    playerMove('SCISSORS');
 });
