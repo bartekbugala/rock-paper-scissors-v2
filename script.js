@@ -39,7 +39,8 @@ function playerMove(playerChoice) {
         gameOver = true;
         gameOverMsg = '<span id="player">YOU WON THE ENTIRE GAME</span>';
         return addLineMsg(outputDiv, gameOverMsg);
-    } if (resultComputer === roundsToWin) {
+    }
+    if (resultComputer === roundsToWin) {
         gameOver = true;
         gameOverMsg = '<span id="computer">COMPUTER WON THE ENTIRE GAME</span>';
         return addLineMsg(outputDiv, gameOverMsg);
@@ -47,35 +48,30 @@ function playerMove(playerChoice) {
     return;
 }
 
-function singleWinMsg(playerChoice,computerChoice,wonLostMsg) {
+function singleWinMsg(playerChoice, computerChoice, wonLostMsg) {
     let keyFigures = {
         'ROCK': '<span id="rock">ROCK</span>',
         'PAPER': '<span id="paper">PAPER</span>',
         'SCISSORS': '<span id="scissors">SCISSORS</span>'
     }
-    return wonLostMsg +'You played: '+keyFigures[playerChoice]+', Computer played: '+keyFigures[computerChoice];
+    return wonLostMsg + 'You played: ' + keyFigures[playerChoice] + ', Computer played: ' + keyFigures[computerChoice];
 }
 
 function checkWinner(playerChoice) {
     let computerChoice = randomOf3();
-    
+
     let winMsg = '<span id="player">YOU WON!</span> ';
     let looseMsg = '<span id="computer">YOU LOST!</span> ';
     let tieMsg = '<span>TIE!</span> ';
-    
-    console.log(playerChoice+' '+computerChoice);
-    console.log(playerChoice === computerChoice);
-    
+
     if (playerChoice === computerChoice) {
-        return singleWinMsg(playerChoice,computerChoice,tieMsg);
-    }
-    else if ((playerChoice === 'ROCK' && computerChoice === 'PAPER')||(playerChoice === 'SCISSORS' && computerChoice === 'ROCK')||(playerChoice === 'PAPER' && computerChoice === 'SCISSORS')) {
+        return singleWinMsg(playerChoice, computerChoice, tieMsg);
+    } else if ((playerChoice === 'ROCK' && computerChoice === 'PAPER') || (playerChoice === 'SCISSORS' && computerChoice === 'ROCK') || (playerChoice === 'PAPER' && computerChoice === 'SCISSORS')) {
         resultComputer++;
-        return singleWinMsg(playerChoice,computerChoice,looseMsg);
-    }    
-    else
-        resultPlayer++;
-        return singleWinMsg(playerChoice,computerChoice,winMsg);    
+        return singleWinMsg(playerChoice, computerChoice, looseMsg);
+    }
+    resultPlayer++;
+    return singleWinMsg(playerChoice, computerChoice, winMsg);
 }
 
 function updateLineMsg(domElement, textToDisplay) {
@@ -91,7 +87,7 @@ function updateResultMsg() {
 }
 
 function gameOverMessageOnButton() {
-    if (gameOverInfo===true){
+    if (gameOverInfo === true) {
         return;
     }
     gameOverInfo = true;
