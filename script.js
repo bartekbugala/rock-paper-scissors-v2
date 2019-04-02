@@ -91,10 +91,10 @@ function updateResultMsg() {
 
 function gameOverMessageOnButton() {
     if (gameOverInfo===true){
-        return
+        return;
     }
     gameOverInfo = true;
-    let msg = "Game over, please press the New Game button!";
+    let msg = 'Game over, please press the New Game button!';
     addLineMsg(outputDiv, msg);
 }
 
@@ -122,7 +122,7 @@ btnStart.addEventListener('click', function () {
 // Figure Buttons
 btnRock.addEventListener('click', function () {
     if (gameOver) {
-        gameOverMessageOnButton()
+        gameOverMessageOnButton();
         return;
     }
     playerMove(1);
@@ -130,7 +130,7 @@ btnRock.addEventListener('click', function () {
 
 btnPaper.addEventListener('click', function () {
     if (gameOver) {
-        gameOverMessageOnButton()
+        gameOverMessageOnButton();
         return;
     }
     playerMove(2);
@@ -138,7 +138,7 @@ btnPaper.addEventListener('click', function () {
 
 btnScissors.addEventListener('click', function () {
     if (gameOver) {
-        gameOverMessageOnButton()
+        gameOverMessageOnButton();
         return;
     }
     playerMove(3);
