@@ -55,34 +55,16 @@ function checkWinner(playerChoice) {
     let computerChoice = randomOf3();
     let winMsg = '<span id="player">YOU WON!</span> ';
     let looseMsg = '<span id="computer">YOU LOST!</span> ';
-    let tieMsg = '<span>TIE!</span> '    
-    if (playerChoice === 1 && computerChoice === 2) {
+    let tieMsg = '<span>TIE!</span> '
+        
+    if ((playerChoice === 1 && computerChoice === 2)||(playerChoice === 3 && computerChoice === 1)||(playerChoice === 2 && computerChoice === 3)) {
         resultComputer++;
         return singleWinMsg(playerChoice,computerChoice,looseMsg);
-    }
-    if (playerChoice === 1 && computerChoice === 3) {
+    }    
+    if ((playerChoice === 2 && computerChoice === 1)||(playerChoice === 1 && computerChoice === 3)||(playerChoice === 3 && computerChoice === 2)) {
         resultPlayer++;
         return singleWinMsg(playerChoice,computerChoice,winMsg);
     }    
-    if (playerChoice === 2 && computerChoice === 1) {
-        resultPlayer++;
-        return singleWinMsg(playerChoice,computerChoice,winMsg);
-    }
-    if (playerChoice === 2 && computerChoice === 3) {
-        resultComputer++;
-        return singleWinMsg(playerChoice,computerChoice,looseMsg);
-    }
-    if (playerChoice === 3 && computerChoice === 2) {
-        resultPlayer++;
-        return singleWinMsg(playerChoice,computerChoice,winMsg);
-    }
-    if (playerChoice === 3 && computerChoice === 1) {
-        resultComputer++;
-        return singleWinMsg(playerChoice,computerChoice,looseMsg);
-    }
-    
-   
-    
     return singleWinMsg(playerChoice,computerChoice,tieMsg);
 }
 
