@@ -58,15 +58,16 @@ function checkWinner(playerChoice) {
     let looseMsg = '<span id="computer">YOU LOST!</span> ';
     let tieMsg = '<span>TIE!</span> '
 
-    if ((playerChoice === 1 && computerChoice === 2)||(playerChoice === 3 && computerChoice === 1)||(playerChoice === 2 && computerChoice === 3)) {
+    if (playerChoice === computerChoice) {
+        singleWinMsg(playerChoice,computerChoice,tieMsg);
+    }
+    else if ((playerChoice === 1 && computerChoice === 2)||(playerChoice === 3 && computerChoice === 1)||(playerChoice === 2 && computerChoice === 3)) {
         resultComputer++;
         return singleWinMsg(playerChoice,computerChoice,looseMsg);
     }    
-    if ((playerChoice === 2 && computerChoice === 1)||(playerChoice === 1 && computerChoice === 3)||(playerChoice === 3 && computerChoice === 2)) {
+    else
         resultPlayer++;
-        return singleWinMsg(playerChoice,computerChoice,winMsg);
-    }    
-    return singleWinMsg(playerChoice,computerChoice,tieMsg);
+        return singleWinMsg(playerChoice,computerChoice,winMsg);    
 }
 
 function updateLineMsg(domElement, textToDisplay) {
