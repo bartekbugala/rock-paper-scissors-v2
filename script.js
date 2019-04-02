@@ -59,22 +59,31 @@ function checkWinner(playerChoice) {
     if (playerChoice === 1 && computerChoice === 2) {
         resultComputer++;
         return singleWinMsg(playerChoice,computerChoice,looseMsg);
-    } else if (playerChoice === 2 && computerChoice === 1) {
+    }
+    if (playerChoice === 1 && computerChoice === 3) {
         resultPlayer++;
         return singleWinMsg(playerChoice,computerChoice,winMsg);
-    } else if (playerChoice === 3 && computerChoice === 1) {
+    }    
+    if (playerChoice === 2 && computerChoice === 1) {
+        resultPlayer++;
+        return singleWinMsg(playerChoice,computerChoice,winMsg);
+    }
+    if (playerChoice === 2 && computerChoice === 3) {
         resultComputer++;
         return singleWinMsg(playerChoice,computerChoice,looseMsg);
-    } else if (playerChoice === 1 && computerChoice === 3) {
+    }
+    if (playerChoice === 3 && computerChoice === 2) {
         resultPlayer++;
         return singleWinMsg(playerChoice,computerChoice,winMsg);
-    } else if (playerChoice === 3 && computerChoice === 2) {
-        resultPlayer++;
-        return singleWinMsg(playerChoice,computerChoice,winMsg);
-    } else if (playerChoice === 2 && computerChoice === 3) {
+    }
+    if (playerChoice === 3 && computerChoice === 1) {
         resultComputer++;
         return singleWinMsg(playerChoice,computerChoice,looseMsg);
-    } return singleWinMsg(playerChoice,computerChoice,tieMsg);
+    }
+    
+   
+    
+    return singleWinMsg(playerChoice,computerChoice,tieMsg);
 }
 
 function updateLineMsg(domElement, textToDisplay) {
