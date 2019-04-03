@@ -130,12 +130,6 @@ btnStart.addEventListener('click', function () {
         updateLineMsg(outputDiv, 'Wrong input, please enter a positive number.');
         return;
     }
-    if (roundsToWin > 99) {
-        roundsToWin = Number.POSITIVE_INFINITY;
-        updateLineMsg(roundsNumber, '∞');
-        updateLineMsg(outputDiv, 'Infinite Rounds.');
-        return;
-    }
     // Reset variables - Start game
     updateLineMsg(outputDiv, 'New game started');
     resultPlayer = 0;
