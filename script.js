@@ -7,29 +7,23 @@ let btnRock = document.getElementById('button-rock');
 let btnPaper = document.getElementById('button-paper');
 let btnScissors = document.getElementById('button-scissors');
 
-let outputDiv = document.getElementById('output');
-
 let btnStart = document.getElementById('button-start');
+
+let outputDiv = document.getElementById('output');
 
 let resultPlayer = 0;
 let resultComputer = 0;
-let roundsToWin = 0;
-let gameOver = true;
+let roundsToWin = Infinity;
+let gameOver = false;
 let gameOverInfo = false;
 
 let gameOverMsg = '';
 
-const mvRock = 'ROCK';
-const mvPaper = 'PAPER';
-const mvScissors = 'SCISSORS';
+const moves = { rock: 'ROCK', paper: 'PAPER', scissors: 'SCISSORS' }
 
 function randomOf3() {
     let randomNumber = Math.floor((Math.random() * 3) + 1);
-    let computerMoves = {
-        1: mvRock,
-        2: mvPaper,
-        3: mvScissors
-    }
+    const computerMoves = { 1: moves.rock, 2: moves.paper, 3: moves.scissors }
     return computerMoves[randomNumber];
 }
 
@@ -41,12 +35,12 @@ function playerMove(playerChoice) {
     }
     if (resultPlayer === roundsToWin) {
         gameOver = true;
-        gameOverMsg = '<span id="player">YOU WON THE ENTIRE GAME</span>';
+        gameOverMsg = wrapWithSpan('YOU WON THE ENTIRE GAME!', 'player');
         return addLineMsg(outputDiv, gameOverMsg);
     }
     if (resultComputer === roundsToWin) {
         gameOver = true;
-        gameOverMsg = '<span id="computer">COMPUTER WON THE ENTIRE GAME</span>';
+        gameOverMsg = wrapWithSpan('COMPUTER WON THE ENTIRE GAME!', 'computer');
         return addLineMsg(outputDiv, gameOverMsg);
     }
     return;
@@ -54,9 +48,9 @@ function playerMove(playerChoice) {
 
 function singleWinMsg(playerChoice, computerChoice, wonLostMsg) {
     let keyFigures = {
-        'ROCK': '<span id="rock">'+mvRock+'</span>',
-        'PAPER': '<span id="paper">'+mvPaper+'</span>',
-        'SCISSORS': '<span id="scissors">'+mvScissors+'</span>'
+        'ROCK': wrapWithSpan(moves.rock, 'rock'),
+        'PAPER': wrapWithSpan(moves.paper, 'paper'),
+        'SCISSORS': wrapWithSpan(moves.scissors, 'scissors')
     }
     return wonLostMsg + 'You played: ' + keyFigures[playerChoice] + ', Computer played: ' + keyFigures[computerChoice];
 }
@@ -64,18 +58,34 @@ function singleWinMsg(playerChoice, computerChoice, wonLostMsg) {
 function checkWinner(playerChoice) {
     let computerChoice = randomOf3();
 
-    let winMsg = '<span id="player">YOU WON!</span> ';
-    let looseMsg = '<span id="computer">YOU LOST!</span> ';
-    let tieMsg = '<span>TIE!</span> ';
+    let winMsg = wrapWithSpan('YOU WON!', 'player');
+    let looseMsg = wrapWithSpan('YOU LOST', 'computer');
+    let tieMsg = wrapWithSpan('TIE!');
 
     if (playerChoice === computerChoice) {
         return singleWinMsg(playerChoice, computerChoice, tieMsg);
-    } else if ((playerChoice === mvRock && computerChoice === mvPaper) || (playerChoice === mvScissors && computerChoice === mvRock) || (playerChoice === mvPaper && computerChoice === mvScissors)) {
+    } else if ((playerChoice === moves.rock && computerChoice === moves.paper) || (playerChoice === moves.scissors && computerChoice === moves.rock) || (playerChoice === moves.paper && computerChoice === moves.scissors)) {
         resultComputer++;
         return singleWinMsg(playerChoice, computerChoice, looseMsg);
     }
     resultPlayer++;
     return singleWinMsg(playerChoice, computerChoice, winMsg);
+}
+
+function wrapWithSpan(textInsideSpan, idOfSpan = '') {
+    let spanStart = '<span';
+    let spanEnd = '>'
+    let idPropertyStart = 'id="';
+    let idPropertyEnd = '"';
+    let spanEndTag = '</span>';
+    let whiteSpace = ' ';
+    let spanExpression;
+    if (idOfSpan === '') {
+        spanExpression = spanStart + spanEnd + textInsideSpan + spanEndTag;
+        return spanExpression;
+    }
+    spanExpression = spanStart + whiteSpace + idPropertyStart + idOfSpan + idPropertyEnd + spanEnd + textInsideSpan + spanEndTag;
+    return spanExpression;
 }
 
 function updateLineMsg(domElement, textToDisplay) {
@@ -99,15 +109,31 @@ function gameOverMessageOnButton() {
     addLineMsg(outputDiv, msg);
 }
 
+function handleBtnClick(move) {
+    return function () {
+        if (gameOver) {
+            gameOverMessageOnButton();
+            return;
+        }
+        playerMove(move);
+    }
+}
+
 btnStart.addEventListener('click', function () {
     // Prompt with validation
-    roundsToWin = prompt('How many rounds to win?');
+    roundsToWin = prompt('How many rounds to win? (Maximum 99)');
     if (roundsToWin === null) {
         return;
     }
     roundsToWin = parseInt(roundsToWin);
     if (isNaN(roundsToWin) || roundsToWin <= 0) {
         updateLineMsg(outputDiv, 'Wrong input, please enter a positive number.');
+        return;
+    }
+    if (roundsToWin > 99) {
+        roundsToWin = Number.POSITIVE_INFINITY;
+        updateLineMsg(roundsNumber, '∞');
+        updateLineMsg(outputDiv, 'Infinite Rounds.');
         return;
     }
     // Reset variables - Start game
@@ -121,17 +147,6 @@ btnStart.addEventListener('click', function () {
 });
 
 // Figure Buttons
-
-function handleBtnClick(move) {
-    return function (){ 
-        if (gameOver) {
-            gameOverMessageOnButton();
-            return;
-        }
-        playerMove(move);
-     }
-}
-
-btnRock.addEventListener('click', handleBtnClick(mvRock));
-btnPaper.addEventListener('click', handleBtnClick(mvPaper));
-btnScissors.addEventListener('click', handleBtnClick(mvScissors));
+btnRock.addEventListener('click', handleBtnClick(moves.rock));
+btnPaper.addEventListener('click', handleBtnClick(moves.paper));
+btnScissors.addEventListener('click', handleBtnClick(moves.scissors));

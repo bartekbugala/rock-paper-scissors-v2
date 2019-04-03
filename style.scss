@@ -13,8 +13,14 @@ $color3: #5b62a5;
 $color4: #555;
 $color5: #ccc;
 $color6: #fff;
-$color7: #dbe91e;
+$color7: #cdc818;
 
+button, span {
+    box-shadow: 0px 0px 3px $color0; 
+    &:hover {
+
+    }
+}
 
 // Simple Grid
 .row {
@@ -107,7 +113,13 @@ section {
         font-size: 2em;
         color: $color5;
         span {
+            display: inline-block;
+            width: 50px;
             color: $color6;
+            padding: 5px;
+            
+            background-color: $color0;
+            border-radius: 80px;
         }
     }
         button {
@@ -166,12 +178,12 @@ section {
         }
         #button-start {
             text-align: center;
-            background-color: $color0;
-            border: 2px solid $color6;
+            background-color: $color2;
+            border: 2px solid $color2;
 
             &:hover,
             &:active {
-                color: $color0;
+                color: $color2;
                 background-color: $color6;
             }
         }

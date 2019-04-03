@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box; }
 
+button, span {
+  box-shadow: 0px 0px 3px #000; }
+
 .row::before, .row::after {
   content: "";
   display: table;
@@ -59,7 +62,12 @@ section {
     font-size: 2em;
     color: #ccc; }
     section div .score-index span {
-      color: #fff; }
+      display: inline-block;
+      width: 50px;
+      color: #fff;
+      padding: 5px;
+      background-color: #000;
+      border-radius: 80px; }
   section div button {
     display: inline-block;
     color: #fff;
@@ -86,10 +94,10 @@ section {
       color: #a7202c;
       background-color: #fff; }
   section div #button-paper {
-    background-color: #dbe91e;
-    border: 2px solid #dbe91e; }
+    background-color: #cdc818;
+    border: 2px solid #cdc818; }
     section div #button-paper:hover, section div #button-paper:active {
-      color: #dbe91e;
+      color: #cdc818;
       background-color: #fff; }
   section div #button-scissors {
     text-align: center;
@@ -100,10 +108,10 @@ section {
       background-color: #fff; }
   section div #button-start {
     text-align: center;
-    background-color: #000;
-    border: 2px solid #fff; }
+    background-color: #02ac46;
+    border: 2px solid #02ac46; }
     section div #button-start:hover, section div #button-start:active {
-      color: #000;
+      color: #02ac46;
       background-color: #fff; }
   section #output {
     color: #fff; }
@@ -140,7 +148,7 @@ section {
     background-color: #a7202c; }
   .output #paper {
     color: #000;
-    background-color: #dbe91e; }
+    background-color: #cdc818; }
   .output #scissors {
     color: #fff;
     background-color: #5b62a5; }
