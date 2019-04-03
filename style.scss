@@ -17,9 +17,9 @@ $color7: #cdc818;
 
 button, span {
     box-shadow: 0px 0px 3px $color0; 
-    &:hover {
-
-    }
+}
+button:hover {
+    box-shadow: 0px 0px 10px $color5;
 }
 
 // Simple Grid

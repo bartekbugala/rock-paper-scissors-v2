@@ -47,7 +47,7 @@ function playerMove(playerChoice) {
 }
 
 function singleWinMsg(playerChoice, computerChoice, wonLostMsg) {
-    let keyFigures = {
+    const keyFigures = {
         'ROCK': wrapWithSpan(moves.rock, 'rock'),
         'PAPER': wrapWithSpan(moves.paper, 'paper'),
         'SCISSORS': wrapWithSpan(moves.scissors, 'scissors')

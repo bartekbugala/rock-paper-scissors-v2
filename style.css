@@ -6,6 +6,9 @@
 button, span {
   box-shadow: 0px 0px 3px #000; }
 
+button:hover {
+  box-shadow: 0px 0px 10px #ccc; }
+
 .row::before, .row::after {
   content: "";
   display: table;
