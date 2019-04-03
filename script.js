@@ -19,12 +19,16 @@ let gameOverInfo = false;
 
 let gameOverMsg = '';
 
+const mvRock = 'ROCK';
+const mvPaper = 'PAPER';
+const mvScissors = 'SCISSORS';
+
 function randomOf3() {
     let randomNumber = Math.floor((Math.random() * 3) + 1);
     let computerMoves = {
-        1: 'ROCK',
-        2: 'PAPER',
-        3: 'SCISSORS'
+        1: mvRock,
+        2: mvPaper,
+        3: mvScissors
     }
     return computerMoves[randomNumber];
 }
@@ -50,9 +54,9 @@ function playerMove(playerChoice) {
 
 function singleWinMsg(playerChoice, computerChoice, wonLostMsg) {
     let keyFigures = {
-        'ROCK': '<span id="rock">ROCK</span>',
-        'PAPER': '<span id="paper">PAPER</span>',
-        'SCISSORS': '<span id="scissors">SCISSORS</span>'
+        'ROCK': '<span id="rock">'+mvRock+'</span>',
+        'PAPER': '<span id="paper">'+mvPaper+'</span>',
+        'SCISSORS': '<span id="scissors">'+mvScissors+'</span>'
     }
     return wonLostMsg + 'You played: ' + keyFigures[playerChoice] + ', Computer played: ' + keyFigures[computerChoice];
 }
@@ -66,7 +70,7 @@ function checkWinner(playerChoice) {
 
     if (playerChoice === computerChoice) {
         return singleWinMsg(playerChoice, computerChoice, tieMsg);
-    } else if ((playerChoice === 'ROCK' && computerChoice === 'PAPER') || (playerChoice === 'SCISSORS' && computerChoice === 'ROCK') || (playerChoice === 'PAPER' && computerChoice === 'SCISSORS')) {
+    } else if ((playerChoice === mvRock && computerChoice === mvPaper) || (playerChoice === mvScissors && computerChoice === mvRock) || (playerChoice === mvPaper && computerChoice === mvScissors)) {
         resultComputer++;
         return singleWinMsg(playerChoice, computerChoice, looseMsg);
     }
@@ -117,26 +121,17 @@ btnStart.addEventListener('click', function () {
 });
 
 // Figure Buttons
-btnRock.addEventListener('click', function () {
-    if (gameOver) {
-        gameOverMessageOnButton()
-        return;
-    }
-    playerMove('ROCK');
-});
 
-btnPaper.addEventListener('click', function () {
-    if (gameOver) {
-        gameOverMessageOnButton()
-        return;
-    }
-    playerMove('PAPER');
-});
+function handleBtnClick(move) {
+    return function (){ 
+        if (gameOver) {
+            gameOverMessageOnButton();
+            return;
+        }
+        playerMove(move);
+     }
+}
 
-btnScissors.addEventListener('click', function () {
-    if (gameOver) {
-        gameOverMessageOnButton();
-        return;
-    }
-    playerMove('SCISSORS');
-});
+btnRock.addEventListener('click', handleBtnClick(mvRock));
+btnPaper.addEventListener('click', handleBtnClick(mvPaper));
+btnScissors.addEventListener('click', handleBtnClick(mvScissors));
