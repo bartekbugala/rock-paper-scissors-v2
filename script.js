@@ -23,7 +23,7 @@ const moves = { rock: 'ROCK', paper: 'PAPER', scissors: 'SCISSORS' }
 
 function randomOf3() {
     let randomNumber = Math.floor((Math.random() * 3) + 1);
-    const computerMoves = { 1: moves.rock, 2: moves.paper, 3: moves.scissors }
+    const computerMoves = { 1: moves.rock, 2: moves.paper, 3: moves.scissors };
     return computerMoves[randomNumber];
 }
 
