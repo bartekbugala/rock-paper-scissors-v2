@@ -136,14 +136,17 @@ btnStart.addEventListener('click', function (event) {
     inputStart.value = roundsToWin;
 
     if (isNaN(roundsToWin) || roundsToWin < 0) {
-        updateLineMsg(outputDiv, 'Wrong number, please enter a positive number.');
+        updateLineMsg(outputDiv, 'Wrong input, please enter a positive number.');
+        inputStart.value = '';
         return;
     }
     if (roundsToWin === 0) {
         roundsToWin = Infinity;
         setNewGame('∞'); 
+        inputStart.value = ''
         return
     }
+    inputStart.value = ''
     setNewGame(roundsToWin);
 });
 
