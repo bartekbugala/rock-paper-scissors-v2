@@ -14,6 +14,7 @@ let outputDiv = document.getElementById('output');
 let resultPlayer = 0;
 let resultComputer = 0;
 let roundsToWin;
+
 let gameOver = false;
 let gameOverInfo = false;
 
