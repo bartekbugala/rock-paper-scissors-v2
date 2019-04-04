@@ -13,7 +13,7 @@ let outputDiv = document.getElementById('output');
 
 let resultPlayer = 0;
 let resultComputer = 0;
-let roundsToWin = Infinity;
+let roundsToWin = null;
 let gameOver = false;
 let gameOverInfo = false;
 
@@ -72,19 +72,13 @@ function checkWinner(playerChoice) {
     return singleWinMsg(playerChoice, computerChoice, winMsg);
 }
 
-function wrapWithSpan(textInsideSpan, idOfSpan = '') {
-    let spanStart = '<span';
-    let spanEnd = '>'
-    let idPropertyStart = 'id="';
-    let idPropertyEnd = '"';
-    let spanEndTag = '</span>';
-    let whiteSpace = ' ';
+function wrapWithSpan(textInsideSpan, idOfSpan) {
     let spanExpression;
-    if (idOfSpan === '') {
-        spanExpression = spanStart + spanEnd + textInsideSpan + spanEndTag;
+    if (idOfSpan === undefined) {
+        spanExpression = '<span>' + textInsideSpan + '</span>';
         return spanExpression;
     }
-    spanExpression = spanStart + whiteSpace + idPropertyStart + idOfSpan + idPropertyEnd + spanEnd + textInsideSpan + spanEndTag;
+    spanExpression = '<span id="' + idOfSpan + '">' + textInsideSpan + '</span>';
     return spanExpression;
 }
 
