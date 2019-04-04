@@ -13,7 +13,7 @@ let outputDiv = document.getElementById('output');
 
 let resultPlayer = 0;
 let resultComputer = 0;
-let roundsToWin = null;
+let roundsToWin;
 let gameOver = false;
 let gameOverInfo = false;
 
@@ -114,7 +114,6 @@ function handleBtnClick(move) {
 }
 
 btnStart.addEventListener('click', function () {
-    // Prompt with validation
     roundsToWin = prompt('How many rounds to win? (Maximum 99)');
     if (roundsToWin === null) {
         return;
@@ -124,7 +123,6 @@ btnStart.addEventListener('click', function () {
         updateLineMsg(outputDiv, 'Wrong input, please enter a positive number.');
         return;
     }
-    // Reset variables - Start game
     updateLineMsg(outputDiv, 'New game started');
     resultPlayer = 0;
     resultComputer = 0;
