@@ -8,6 +8,7 @@ let btnPaper = document.getElementById('button-paper');
 let btnScissors = document.getElementById('button-scissors');
 
 let btnStart = document.getElementById('button-start');
+let inputStart = document.getElementById('rounds-to-win');
 
 let outputDiv = document.getElementById('output');
 
@@ -119,25 +120,31 @@ function handleBtnClick(move) {
     }
 }
 
-btnStart.addEventListener('click', function () {
-    // Prompt with validation
-    roundsToWin = prompt('How many rounds to win? (Maximum 99)');
-    if (roundsToWin === null) {
-        return;
-    }
-    roundsToWin = parseInt(roundsToWin);
-    if (isNaN(roundsToWin) || roundsToWin <= 0) {
-        updateLineMsg(outputDiv, 'Wrong input, please enter a positive number.');
-        return;
-    }
-    // Reset variables - Start game
-    updateLineMsg(outputDiv, 'New game started');
+function setNewGame(roundsToWin){
     resultPlayer = 0;
     resultComputer = 0;
     gameOver = false;
     gameOverInfo = false;
     updateResultMsg();
+    updateLineMsg(outputDiv, 'New game started');
     updateLineMsg(roundsNumber, roundsToWin);
+}
+
+btnStart.addEventListener('click', function (event) {
+    event.preventDefault();
+    roundsToWin = parseInt(inputStart.value);
+    inputStart.value = roundsToWin;
+
+    if (isNaN(roundsToWin) || roundsToWin < 0) {
+        updateLineMsg(outputDiv, 'Wrong number, please enter a positive number.');
+        return;
+    }
+    if (roundsToWin === 0) {
+        roundsToWin = Infinity;
+        setNewGame('∞'); 
+        return
+    }
+    setNewGame(roundsToWin);
 });
 
 // Figure Buttons
