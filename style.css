@@ -116,6 +116,24 @@ section {
     section div #button-start:hover, section div #button-start:active {
       color: #02ac46;
       background-color: #fff; }
+  section div form > div:first-of-type {
+    display: inline-block;
+    color: white;
+    line-height: 15px; }
+  section div form #rounds-to-win {
+    color: #000;
+    padding: 11px 1px;
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center; }
+  section div form input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0; }
+    section div form input[type=number]::-webkit-inner-spin-button, section div form input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
   section #output {
     color: #fff; }
   section #result {
