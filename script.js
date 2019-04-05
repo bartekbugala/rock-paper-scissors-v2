@@ -113,6 +113,18 @@ function handleBtnClick(move) {
         playerMove(move);
     }
 }
+function resetGame(roundsToWin,startMessage){
+    if(roundsToWin===undefined){
+        roundsToWin = '∞';
+    }
+    resultPlayer = 0;
+    resultComputer = 0;
+    gameOver = false;
+    gameOverInfo = false;
+    updateResultMsg();
+    updateLineMsg(outputDiv, startMessage);
+    updateLineMsg(roundsNumber, roundsToWin);
+}
 
 btnStart.addEventListener('click', function () {
     roundsToWin = prompt('How many rounds to win? (Maximum 99)');
@@ -120,17 +132,17 @@ btnStart.addEventListener('click', function () {
         return;
     }
     roundsToWin = parseInt(roundsToWin);
-    if (isNaN(roundsToWin) || roundsToWin <= 0) {
+    if (isNaN(roundsToWin) || roundsToWin < 0) {
+        roundsToWin = parseInt(roundsNumber.textContent);
         updateLineMsg(outputDiv, 'Wrong input, please enter a positive number.');
+        return;       
+    }
+    if (roundsToWin === 0) {
+        roundsToWin = undefined;
+        resetGame(roundsToWin,'Game Started. Infinite play.');
         return;
     }
-    updateLineMsg(outputDiv, 'New game started');
-    resultPlayer = 0;
-    resultComputer = 0;
-    gameOver = false;
-    gameOverInfo = false;
-    updateResultMsg();
-    updateLineMsg(roundsNumber, roundsToWin);
+    resetGame(roundsToWin,'New game started. To win the game you need to win '+roundsToWin+' rounds.');
 });
 
 // Figure Buttons
