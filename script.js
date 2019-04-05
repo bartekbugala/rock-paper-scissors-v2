@@ -42,12 +42,6 @@ function playerMove(playerChoice) {
 }
 
 function wrapWithSpan(textInsideSpan, spanID) {
-    /*
-        Funtion to wrap text in span to change styling
-        if second argument is false: (id="...") is ommited
-        if second argument is empty: (id="...") contains the first argument in lowercase
-        if second argument is string: (id="...") contains the exact string
-    */
     let spanExpression;
     if (spanID === false) {
         spanExpression = '<span>' + textInsideSpan + '</span>';
