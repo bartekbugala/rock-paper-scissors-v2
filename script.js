@@ -8,6 +8,7 @@ let btnPaper = document.getElementById('button-paper');
 let btnScissors = document.getElementById('button-scissors');
 
 let btnStart = document.getElementById('button-start');
+let inputStart = document.getElementById('rounds-to-win');
 
 let outputDiv = document.getElementById('output');
 
@@ -126,8 +127,11 @@ function resetGame(roundsToWin,startMessage){
     updateLineMsg(roundsNumber, roundsToWin);
 }
 
-btnStart.addEventListener('click', function () {
-    roundsToWin = prompt('How many rounds to win? (Maximum 99)');
+btnStart.addEventListener('click', function (event) {
+    event.preventDefault();
+    roundsToWin = parseInt(inputStart.value);
+    inputStart.value = roundsToWin;
+    ///roundsToWin = prompt('How many rounds to win? (Maximum 99)');
     if (roundsToWin === null) {
         return;
     }
