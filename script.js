@@ -1,26 +1,20 @@
 'use strict'
 
-let resultDiv = document.getElementById('result');
-let roundsNumber = document.getElementById('rounds-number');
-
-let btnRock = document.getElementById('button-rock');
-let btnPaper = document.getElementById('button-paper');
-let btnScissors = document.getElementById('button-scissors');
-
-let btnStart = document.getElementById('button-start');
-
-let outputDiv = document.getElementById('output');
+const resultDiv = document.getElementById('result');
+const roundsNumber = document.getElementById('rounds-number');
+const btnRock = document.getElementById('button-rock');
+const btnPaper = document.getElementById('button-paper');
+const btnScissors = document.getElementById('button-scissors');
+const btnStart = document.getElementById('button-start');
+const outputDiv = document.getElementById('output');
+const moves = { rock: 'ROCK', paper: 'PAPER', scissors: 'SCISSORS' }
 
 let resultPlayer = 0;
 let resultComputer = 0;
 let roundsToWin;
-
 let gameOver = false;
 let gameOverInfo = false;
-
 let gameOverMsg = '';
-
-const moves = { rock: 'ROCK', paper: 'PAPER', scissors: 'SCISSORS' }
 
 function randomOf3() {
     let randomNumber = Math.floor((Math.random() * 3) + 1);
@@ -47,13 +41,29 @@ function playerMove(playerChoice) {
     return;
 }
 
-function singleWinMsg(playerChoice, computerChoice, wonLostMsg) {
-    const keyFigures = {
-        'ROCK': wrapWithSpan(moves.rock, 'rock'),
-        'PAPER': wrapWithSpan(moves.paper, 'paper'),
-        'SCISSORS': wrapWithSpan(moves.scissors, 'scissors')
+function wrapWithSpan(textInsideSpan, spanID) {
+    /*
+        Funtion to wrap text in span to change styling
+        if second argument is false: (id="...") is ommited
+        if second argument is empty: (id="...") contains the first argument in lowercase
+        if second argument is string: (id="...") contains the exact string
+    */
+    let spanExpression;
+    if (spanID === false) {
+        spanExpression = '<span>' + textInsideSpan + '</span>';
+        return spanExpression;
     }
-    return wonLostMsg + 'You played: ' + keyFigures[playerChoice] + ', Computer played: ' + keyFigures[computerChoice];
+    if (spanID === undefined) {
+        spanID = textInsideSpan.toLowerCase()
+        spanExpression = '<span id="' + spanID + '">' + textInsideSpan + '</span>';
+        return spanExpression;
+    }
+    spanExpression = '<span id="' + spanID + '">' + textInsideSpan + '</span>';
+    return spanExpression;
+}
+
+function singleWinMsg(playerChoice, computerChoice, wonLostMsg) {
+    return wonLostMsg + 'You played: ' + wrapWithSpan(playerChoice) + ', Computer played: ' + wrapWithSpan(computerChoice);
 }
 
 function checkWinner(playerChoice) {
@@ -61,7 +71,7 @@ function checkWinner(playerChoice) {
 
     let winMsg = wrapWithSpan('YOU WON!', 'player');
     let looseMsg = wrapWithSpan('YOU LOST', 'computer');
-    let tieMsg = wrapWithSpan('TIE!');
+    let tieMsg = wrapWithSpan('TIE!', false);
 
     if (playerChoice === computerChoice) {
         return singleWinMsg(playerChoice, computerChoice, tieMsg);
@@ -71,16 +81,6 @@ function checkWinner(playerChoice) {
     }
     resultPlayer++;
     return singleWinMsg(playerChoice, computerChoice, winMsg);
-}
-
-function wrapWithSpan(textInsideSpan, idOfSpan) {
-    let spanExpression;
-    if (idOfSpan === undefined) {
-        spanExpression = '<span>' + textInsideSpan + '</span>';
-        return spanExpression;
-    }
-    spanExpression = '<span id="' + idOfSpan + '">' + textInsideSpan + '</span>';
-    return spanExpression;
 }
 
 function updateLineMsg(domElement, textToDisplay) {
