@@ -3,7 +3,8 @@
   padding: 0;
   box-sizing: border-box; }
 
-button, span {
+button,
+span {
   box-shadow: 0px 0px 3px #000; }
 
 button:hover {
@@ -64,6 +65,8 @@ section {
   section div .score-index {
     font-size: 2em;
     color: #ccc; }
+    section div .score-index > div > div {
+      display: inline; }
     section div .score-index span {
       display: inline-block;
       min-width: 50px;
@@ -179,5 +182,62 @@ section {
   .output #computer {
     color: #fff;
     background-color: #a7202c; }
+
+@media (max-width: 1000px) {
+  .container {
+    width: 95%; }
+
+  body {
+    text-align: center;
+    background-color: #ccc;
+    color: #5b62a5;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: cover; }
+
+  .row .col-m-1 {
+    width: 8.33%; }
+  .row .col-m-2 {
+    width: 16.66%; }
+  .row .col-m-3 {
+    width: 25%; }
+  .row .col-m-4 {
+    width: 33.33%; }
+  .row .col-m-5 {
+    width: 41.66%; }
+  .row .col-m-6 {
+    width: 50%; }
+  .row .col-m-7 {
+    width: 58.33%; }
+  .row .col-m-8 {
+    width: 66.66%; }
+  .row .col-m-9 {
+    width: 75%; }
+  .row .col-m-10 {
+    width: 83.33%; }
+  .row .col-m-11 {
+    width: 91.66%; }
+  .row .col-m-12 {
+    width: 100%;
+    text-align: center !important; }
+
+  section {
+    padding: 8px;
+    margin-top: 15px; }
+    section > div > div {
+      display: block;
+      clear: both; }
+      section > div > div > div {
+        display: block; }
+    section > div [class*="col-"] {
+      width: 100% !important;
+      text-align: center; } }
+button {
+  margin: 5px auto !important; }
+
+.output {
+  line-height: 30px; }
+  .output span {
+    margin: 0 4px; }
 
 /*# sourceMappingURL=style.css.map */

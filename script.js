@@ -137,8 +137,9 @@ btnStart.addEventListener('click', function (event) {
     }
     roundsToWin = parseInt(roundsToWin);
     if (isNaN(roundsToWin) || roundsToWin < 0) {
-        roundsToWin = parseInt(roundsNumber.textContent);
-        updateLineMsg(outputDiv, 'Wrong input, please enter a positive number.');
+        roundsToWin = undefined;
+        
+        resetGame(roundsToWin,'Wrong input, please enter a positive number.<br><br>Infinite play.');
         return;       
     }
     if (roundsToWin === 0) {
