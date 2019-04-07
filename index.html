@@ -10,17 +10,17 @@
 <body>
     <section class="container">
         <div class="row">
-            <div class="col-2 score-index">Score:</div>
-            <div class="col-3" id="result"><span>0</span> - <span>0</span></div>
-            <div class="col-7 score-index">Rounds to win: <span id="rounds-number">∞</span></div>
+            <div class="col-2 col-m-12 score-index">Score:</div>
+            <div class="col-3 col-m-12" id="result"><div><span>0</span> - <span>0</span></div></div>
+            <div class="col-7 col-m-12 score-index">Rounds to win: <span id="rounds-number">∞</span><div>
         </div>
     </section>
     
     <section class="container">
         <div>
-            <button id="button-rock">Rock</button>
-            <button id="button-paper">Paper</button>
-            <button id="button-scissors">Scissors</button>
+            <button class="col-m-12" id="button-rock">Rock</button>
+            <button class="col-m-12" id="button-paper">Paper</button>
+            <button class="col-m-12" id="button-scissors">Scissors</button>
         </div>
     </section>
 
@@ -30,7 +30,11 @@
 
     <section class="container">
         <div>
-            <button id="button-start">new game</button>
+            <form><div>How many rounds to win?<br>(0 = inifite play)</div>
+                <input type="number" id="rounds-to-win" min="0">
+                <button class="col-m-12" id="button-start" type="input">new game</button>
+            </form>
+            
         </div>
     </section>
     <script src="./script.js"></script>

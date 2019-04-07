@@ -15,9 +15,11 @@ $color5: #ccc;
 $color6: #fff;
 $color7: #cdc818;
 
-button, span {
-    box-shadow: 0px 0px 3px $color0; 
+button,
+span {
+    box-shadow: 0px 0px 3px $color0;
 }
+
 button:hover {
     box-shadow: 0px 0px 10px $color5;
 }
@@ -91,7 +93,7 @@ body {
     color: $color3;
     background-image: url(https://images.freeimages.com/images/large-previews/336/rock-paper-scissors-1238146.jpg);
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;
 }
 
 .container {
@@ -108,20 +110,28 @@ section {
     box-shadow: 0px 0px 10px #000;
     border-radius: 20px;
     padding: 20px;
+
     div {
         .score-index {
-        font-size: 2em;
-        color: $color5;
-        span {
-            display: inline-block;
-            min-width: 50px;
-            color: $color6;
-            padding: 5px;
-            
-            background-color: $color0;
-            border-radius: 50px;
+            font-size: 2em;
+            color: $color5;
+
+            >div {
+                >div {
+                    display: inline;
+                }
+            }
+
+            span {
+                display: inline-block;
+                min-width: 50px;
+                color: $color6;
+                padding: 5px;
+                background-color: $color0;
+                border-radius: 50px;
+            }
         }
-    }
+
         button {
             display: inline-block;
             color: $color6;
@@ -176,6 +186,7 @@ section {
                 background-color: $color6;
             }
         }
+
         #button-start {
             text-align: center;
             background-color: $color2;
@@ -187,10 +198,42 @@ section {
                 background-color: $color6;
             }
         }
+
+        form {
+            >div:first-of-type {
+                display: inline-block;
+                color: white;
+                line-height: 15px;
+            }
+
+            #rounds-to-win {
+                color: $color0;
+                padding: 11px 1px;
+                max-width: 100%;
+                font-size: 16px;
+                font-weight: 600;
+
+                text-align: center;
+            }
+
+            input[type=number] {
+                -moz-appearance: textfield;
+                appearance: textfield;
+                margin: 0;
+
+                &::-webkit-inner-spin-button,
+                &::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+        }
     }
+
     #output {
         color: $color6;
     }
+
     #result {
         font-size: 2em;
         color: $color6;
@@ -205,6 +248,7 @@ section {
             background-color: $color0;
             border-radius: 50px;
         }
+
         span:last-child {
             min-width: 50px;
             display: inline-block;
@@ -216,32 +260,142 @@ section {
         }
     }
 }
+
 .output {
     min-height: 120px;
+
     span {
         color: $color0;
         padding: 4px;
         border-radius: 5px;
         background-color: $color5;
     }
+
     #rock {
         color: $color6;
-        background-color: $color1;        
+        background-color: $color1;
     }
+
     #paper {
         color: $color0;
-        background-color: $color7; 
+        background-color: $color7;
     }
+
     #scissors {
         color: $color6;
         background-color: $color3;
     }
+
     #player {
         color: $color6;
         background-color: $color2;
     }
+
     #computer {
         color: $color6;
         background-color: $color1;
+    }
+}
+
+
+@media (max-width:1000px) {
+    .container {
+        width: 95%;
+    }
+
+    body {
+        text-align: center;
+        background-color: $color5;
+        color: $color3;
+        background-image: none;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .row {
+
+        .col-m-1 {
+            width: 8.33%;
+        }
+
+        .col-m-2 {
+            width: 16.66%;
+        }
+
+        .col-m-3 {
+            width: 25%;
+        }
+
+        .col-m-4 {
+            width: 33.33%;
+        }
+
+        .col-m-5 {
+            width: 41.66%;
+        }
+
+        .col-m-6 {
+            width: 50%;
+        }
+
+        .col-m-7 {
+            width: 58.33%;
+        }
+
+        .col-m-8 {
+            width: 66.66%;
+        }
+
+        .col-m-9 {
+            width: 75%;
+        }
+
+        .col-m-10 {
+            width: 83.33%;
+        }
+
+        .col-m-11 {
+            width: 91.66%;
+        }
+
+        .col-m-12 {
+            width: 100%;
+            text-align: center !important;
+
+        }
+    }
+
+    section {
+        padding: 8px;
+        margin-top: 15px;
+
+        >div {
+            >div {
+                display: block;
+                clear: both;
+
+                >div {
+                    display: block;
+                }
+
+            }
+
+            [class*="col-"] {
+                width: 100% !important;
+                text-align: center;
+            }
+        }
+    }
+}
+
+button {
+    margin: 5px auto !important;
+}
+
+.output {
+    line-height: 30px;
+
+    span {
+        margin: 0 4px;
     }
 }

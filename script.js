@@ -1,5 +1,6 @@
 'use strict'
 
+
 const resultDiv = document.getElementById('result');
 const roundsNumber = document.getElementById('rounds-number');
 const btnRock = document.getElementById('button-rock');
@@ -8,6 +9,8 @@ const btnScissors = document.getElementById('button-scissors');
 const btnStart = document.getElementById('button-start');
 const outputDiv = document.getElementById('output');
 const moves = { rock: 'ROCK', paper: 'PAPER', scissors: 'SCISSORS' }
+const inputStart = document.getElementById('rounds-to-win');
+
 
 let resultPlayer = 0;
 let resultComputer = 0;
@@ -107,24 +110,40 @@ function handleBtnClick(move) {
         playerMove(move);
     }
 }
-
-btnStart.addEventListener('click', function () {
-    roundsToWin = prompt('How many rounds to win? (Maximum 99)');
-    if (roundsToWin === null) {
-        return;
+function resetGame(roundsToWin,startMessage){
+    if(roundsToWin===undefined){
+        roundsToWin = '∞';
     }
-    roundsToWin = parseInt(roundsToWin);
-    if (isNaN(roundsToWin) || roundsToWin <= 0) {
-        updateLineMsg(outputDiv, 'Wrong input, please enter a positive number.');
-        return;
-    }
-    updateLineMsg(outputDiv, 'New game started');
     resultPlayer = 0;
     resultComputer = 0;
     gameOver = false;
     gameOverInfo = false;
     updateResultMsg();
+    updateLineMsg(outputDiv, startMessage);
     updateLineMsg(roundsNumber, roundsToWin);
+}
+
+btnStart.addEventListener('click', function (event) {
+    event.preventDefault();
+    roundsToWin = parseInt(inputStart.value);
+    inputStart.value = roundsToWin;
+    ///roundsToWin = prompt('How many rounds to win? (Maximum 99)');
+    if (roundsToWin === null) {
+        return;
+    }
+    roundsToWin = parseInt(roundsToWin);
+    if (isNaN(roundsToWin) || roundsToWin < 0) {
+        roundsToWin = undefined;
+        
+        resetGame(roundsToWin,'Wrong input, please enter a positive number.<br><br>Infinite play.');
+        return;       
+    }
+    if (roundsToWin === 0) {
+        roundsToWin = undefined;
+        resetGame(roundsToWin,'Game Started. Infinite play.');
+        return;
+    }
+    resetGame(roundsToWin,'New game started. To win the game you need to win '+roundsToWin+' rounds.');
 });
 
 // Figure Buttons
