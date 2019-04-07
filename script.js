@@ -1,6 +1,4 @@
 'use strict'
-
-
 const resultDiv = document.getElementById('result');
 const roundsNumber = document.getElementById('rounds-number');
 const btnRock = document.getElementById('button-rock');
@@ -10,7 +8,6 @@ const btnStart = document.getElementById('button-start');
 const outputDiv = document.getElementById('output');
 const moves = { rock: 'ROCK', paper: 'PAPER', scissors: 'SCISSORS' }
 const inputStart = document.getElementById('rounds-to-win');
-
 
 let resultPlayer = 0;
 let resultComputer = 0;
@@ -127,7 +124,6 @@ btnStart.addEventListener('click', function (event) {
     event.preventDefault();
     roundsToWin = parseInt(inputStart.value);
     inputStart.value = roundsToWin;
-    ///roundsToWin = prompt('How many rounds to win? (Maximum 99)');
     if (roundsToWin === null) {
         return;
     }
